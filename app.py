@@ -14,7 +14,6 @@ OPENAI_API_KEY = st.text_input('OpenAI API Key', type='password')
 pdf_obj = st.file_uploader("Carga tu documento", type="pdf", on_change=st.cache_resource.clear)
 
 @st.cache_resource 
-
 def create_embeddings(pdf):
     pdf_reader = PdfReader(pdf)
     text = ""
@@ -28,7 +27,7 @@ def create_embeddings(pdf):
         )        
     chunks = text_splitter.split_text(text)
 
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
     knowledge_base = FAISS.from_texts(chunks, embeddings)
 
     return knowledge_base

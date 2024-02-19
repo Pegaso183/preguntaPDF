@@ -1,6 +1,6 @@
 PyPDF2
 langchain
 sentence-transformers
-faiss-gpu
+faiss-cpu
 openai
 streamlit
